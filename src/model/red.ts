@@ -21,7 +21,7 @@ class red {
         })
 
         flechas.forEach(element => {
-            this.crearflecha(element['id'], element['color'], element['nodoIn'], element['nodoOut']);
+            this.crearFlecha(element['id'], element['color'], element['nodoTo'], element['nodoFrom']);
         })
     }
 
@@ -43,24 +43,23 @@ class red {
             default:
                 throw new Error("No existe el tipo de nodo");
         }
-        
     }
 
-    crearflecha(id: string, color: number, nodoIn?: string, nodoOut?: string) {
+    crearFlecha(id: string, color: number, nodoIn: string, nodoOut: string) {
 
-        let nodoInObj = this.nodos.find(element => element.id === nodoIn);
-        let nodoOutObj = this.nodos.find(element => element.id === nodoOut);
+        let nodoToObj = this.nodos.find(element => element.id === nodoIn);
+        let nodofromObj = this.nodos.find(element => element.id === nodoOut);
 
-        let nuevaFlecha = new flecha(id, nodoInObj, nodoOutObj, color)
+        if (nodoToObj != undefined && nodofromObj != undefined) {            
+            let nuevaFlecha = new flecha(id, nodoToObj, nodofromObj, color)
+            this.flechas.push(nuevaFlecha);
 
-        this.flechas.push(nuevaFlecha);
-        if (nodoInObj) {
-            nodoInObj.agregarflechaIn(nuevaFlecha);
+            nodoToObj.agregarflechaIn(nuevaFlecha);
+            nodofromObj.agregarflechaOut(nuevaFlecha);
         }
-        if (nodoOutObj) {
-            nodoOutObj.agregarflechaOut(nuevaFlecha);
+        else{
+        throw new Error("No existe el nodo de entrada o salida");
         }
-        
     }
 
     getNodosBasic(){
@@ -75,7 +74,7 @@ class red {
     getFlechasBasic(){
         let flechasBasic: flechaBasic[] = this.flechas.map(
             element => {
-            return {id: element.id, nodoIn: element.nodoIn?.id, nodoOut: element.nodoOut?.id, color: element.color}
+            return {id: element.id, nodoTo: element.nodoTo!.id, nodoFrom: element.nodoFrom!.id, color: element.color}
         });
 
         return flechasBasic;
@@ -86,7 +85,7 @@ class red {
         if (a === undefined) {
             throw new Error("No existe la flecha");
         }
-        return {id: a.id, nodoIn: a.nodoIn?.id, nodoOut: a.nodoOut?.id, color: a.color};
+        return {id: a.id, nodoTo: a.nodoTo!.id, nodoFrom: a.nodoFrom!.id, color: a.color};
     }
     
     public get nodos() : nodo[] {

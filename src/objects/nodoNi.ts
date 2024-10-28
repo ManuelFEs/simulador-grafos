@@ -9,10 +9,14 @@ class nodoNi extends nodo {
     }
 
     colorSalida(): number { //decide color de flechas salientes
-        let hayRojo = this.inFlechas.find(element => 
-            element.color == 1
-        )
-        if(hayRojo){
+        let hayRojo = false;
+        for (let i = 0; i < this.inFlechas.length; i++) {
+            if (this.inFlechas[i].color === 1) {
+                hayRojo = true;
+            }
+        }
+        
+        if(hayRojo) {
             return 0;
         }
         return 1;

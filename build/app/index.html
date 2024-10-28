@@ -34,49 +34,7 @@
           <x-label>Save</x-label>
           <x-shortcut value="Control+S"></x-shortcut>
         </x-menuitem>
-  
-        <x-menuitem>
-          <x-label>Save as…</x-label>
-          <x-shortcut value="Control+Shift+S"></x-shortcut>
-        </x-menuitem>
-      </x-menu>
-    </x-menuitem>
-  
-    <x-menuitem>
-      <x-label>Editar</x-label>
-  
-      <x-menu>
-        <x-menuitem>
-          <x-icon href="#history-undo"></x-icon>
-          <x-label>Undo</x-label>
-          <x-shortcut value="Control+Z"></x-shortcut>
-        </x-menuitem>
-  
-        <x-menuitem disabled>
-          <x-icon href="#history-redo"></x-icon>
-          <x-label>Redo</x-label>
-          <x-shortcut value="Control+Shift+Z"></x-shortcut>
-        </x-menuitem>
-  
-        <hr>
-  
-        <x-menuitem>
-          <x-icon href="#cut"></x-icon>
-          <x-label>Cut</x-label>
-          <x-shortcut value="Control+X"></x-shortcut>
-        </x-menuitem>
-  
-        <x-menuitem>
-          <x-icon href="#copy"></x-icon>
-          <x-label>Copy</x-label>
-          <x-shortcut value="Control+C"></x-shortcut>
-        </x-menuitem>
-  
-        <x-menuitem>
-          <x-icon href="#paste"></x-icon>
-          <x-label>Paste</x-label>
-          <x-shortcut value="Control+V"></x-shortcut>
-        </x-menuitem>
+
       </x-menu>
     </x-menuitem>
   
@@ -89,14 +47,17 @@
             <x-menu>
               <x-menuitem id="NodoAgregar">
                 <x-label>Agregar</x-label>
+                <x-shortcut value="Control+A"></x-shortcut>
               </x-menuitem>
   
               <x-menuitem id="NodoEditar">
                 <x-label>Editar</x-label>
+                <x-shortcut value="S"></x-shortcut>
               </x-menuitem>
   
               <x-menuitem id="NodoEliminar">
                 <x-label>Eliminar</x-label>
+                <x-shortcut value="D"></x-shortcut>
               </x-menuitem>
             </x-menu>
         </x-menuitem>
@@ -106,23 +67,26 @@
           <x-menu>
             <x-menuitem id="FlechaAgregar">
               <x-label>Agregar</x-label>
+              <x-shortcut value="Z"></x-shortcut>
             </x-menuitem>
 
             <x-menuitem id="FlechaEditar">
               <x-label>Editar</x-label>
+              <x-shortcut value="X"></x-shortcut>
             </x-menuitem>
   
             <x-menuitem id="FlechaEliminar">
               <x-label>Eliminar</x-label>
+              <x-shortcut value="C"></x-shortcut>
             </x-menuitem>
           </x-menu>
         </x-menuitem>
       </x-menu>
     </x-menuitem>
-  
-      <x-notification timeout="2000">This notification will disappear after 2000 miliseconds.</x-notification>
     <x-menuitem id="colorear">
       <x-label>Colorear</x-label>
+      <x-notification opened timeout="2000">This notification will disappear after 2000 miliseconds.</x-notification>
+
     </x-menuitem>
   </x-menubar>
 

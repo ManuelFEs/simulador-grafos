@@ -2,14 +2,14 @@ import { ItemRed } from "../util/objetosRed";import { nodo } from "./nodo";
 
 class flecha extends ItemRed  {
     
-    _nodoIn?: nodo;
-    _nodoOut?: nodo;
+    _nodoTo: nodo;
+    _nodoFrom: nodo;
     _color : number; //1 = rojo, 0 = azul, 2 = negro
 
-    constructor(_id: string, nodoIn?: nodo, nodoOut?: nodo, color: number = 2) {
+    constructor(_id: string, nodoIn: nodo, nodoOut: nodo, color: number = 2) {
         super (_id);
-        this._nodoIn = nodoIn;
-        this._nodoOut = nodoOut;
+        this._nodoTo = nodoIn;
+        this._nodoFrom = nodoOut;
         this._color = color;
     }
 
@@ -19,12 +19,12 @@ class flecha extends ItemRed  {
     }
 
 
-    public get nodoIn() : nodo | undefined {
-        return this._nodoIn;
+    public get nodoTo() : nodo | undefined {
+        return this._nodoTo;
     }
 
-    public get nodoOut() : nodo |undefined {
-        return this._nodoOut;
+    public get nodoFrom() : nodo |undefined {
+        return this._nodoFrom;
     }
 
     
@@ -42,8 +42,8 @@ class flecha extends ItemRed  {
 
 interface flechaBasic{
     id: string;
-    nodoIn?: string;
-    nodoOut?: string;
+    nodoTo: string;
+    nodoFrom: string;
     color: number;
 }
 

@@ -57,6 +57,20 @@ class canvas {
         })
     }
 
+    //CRUD objetos to view
+
+    nodoAgregar(id: vis.IdType, tipo: string) {
+        id = id.toString();
+        this.controller.agregarNodeToModel(id, tipo);
+    }
+
+    flechaAgregar(id: vis.IdType, color: string, to: vis.IdType, from:vis.IdType) {
+        id = id.toString();
+        to = to.toString();
+        from = from.toString();
+        this.controller.agregarFlechaToModel({id, color, to, from} as visjsEdge);
+    }
+
     //Funciones de botones
 
     colorear(){ //TODO hacer funcionar
@@ -69,20 +83,18 @@ class canvas {
         });
     }
 
-    nodoAgregar(id: vis.IdType) {
-        
-    }
-
     NodoAgregarBtn() {
         this.network.addNodeMode()
     }
     
     NodoEliminar() {
-        let a = this.network.deleteSelected()
+        this.network.deleteSelected()
     }
-    FlechaAgregar() {
-        throw new Error("Method not implemented.");
+    
+    flechaAgregarBtn() {
+        this.network.addEdgeMode()
     }
+
     FlechaEditar() {
         throw new Error("Method not implemented.");
     }
@@ -101,14 +113,14 @@ class canvas {
 }
 
 
-interface visjsEdge{
+export interface visjsEdge{
     id: number | string;
     to?: number | string;
     from?: number | string;
     color: string;
 }
 
-interface visjsNode{
+export interface visjsNode{
     id: number | string;
 }
 

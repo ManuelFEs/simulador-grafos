@@ -8,7 +8,7 @@ export class coloreador {
         this.red = red;
     }
 
-    coloreo(id: string){ //TODO: Implementar
+    coloreo(id: string){
         let flechaSeleccionada = this.red.flechas.find(element => element.id === id);
         if (flechaSeleccionada !== undefined) {
             this.coloringLoop(flechaSeleccionada);
@@ -21,9 +21,7 @@ export class coloreador {
         }
     }
 
-    private coloringLoop(flechaSeleccionada: flecha) { //FALTA EN EL CORRECTO
-        //NO USAR NUNCA Flecha.GET() EN OPERACIONES, siempre los propios
-        //IMPORTANTE FALLA SI NO SE TIENE UN GRAFO ESTABLE
+    private coloringLoop(flechaSeleccionada: flecha) { 
         let cola : flecha[] = [];
         cola.push(flechaSeleccionada);
       
@@ -48,14 +46,12 @@ export class coloreador {
 
     private Seleccionarflecha(flecha: flecha){
         this.ColorearFlecha(flecha);
-        return flecha.nodoIn;
+        return flecha.nodoTo;
     }
 
     private ColorearFlecha(flecha: flecha) {
-
-
-        if(flecha.nodoOut){
-            flecha.color = flecha.nodoOut.colorSalida();
+        if(flecha.nodoFrom){
+            flecha.color = flecha.nodoFrom.colorSalida();
         }
         else{
             flecha.color = 1;

@@ -1,4 +1,4 @@
-import { Edge, Node } from "vis-network/standalone";
+import { Edge, Node } from "vis-network/standalone/umd/vis-network";
 import canvas from "./Canvas";
 
 
@@ -27,12 +27,9 @@ var options = {
     manipulation: {
       enabled: false,
 
-      addNode: addEdgeFunction,
+      addNode: addNodeFunction,
 
-      addEdge: function(edgeData:Edge,callback:any) {
-        callback(edgeData);
-      },
-
+      addEdge: addEdgeFunction,
 
       editNode: function (nodeData:Node, callback:any) {
         callback(nodeData);
@@ -45,13 +42,21 @@ var options = {
 }
 
 
-function addEdgeFunction(nodeData:Edge, callback:Function, ) {
+function addNodeFunction(nodeData:Edge, callback:Function, ) {
   nodeData.label = undefined;
+  let tipo = 'ni'; //Hardcoded
   if (nodeData.id) {
-    canvasT.nodoAgregar(nodeData.id)
+    canvasT.nodoAgregar(nodeData.id, tipo);
   }
   callback(nodeData);
-  
+}
+
+function addEdgeFunction(edgeData:Edge,callback:any) {
+  edgeData.color = 'black';
+  callback(edgeData);
+  if (edgeData.id && edgeData.from && edgeData.to && edgeData.color) {
+    canvasT.flechaAgregar(edgeData.id, edgeData.color, edgeData.to, edgeData.from);
+  }
 }
 
 function setCanvas(c : canvas) {

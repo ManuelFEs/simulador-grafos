@@ -122,7 +122,7 @@ export class MenuHelper {
     }
 
     FlechaAgregar(): void {
-        this.superior.FlechaAgregar();
+        this.superior.flechaAgregarBtn();
     }
 
     FlechaEditar(): void {

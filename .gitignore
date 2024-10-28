@@ -3,3 +3,4 @@ node_modules
 !build/index.html
 !build/style.css
 build/src
+.vscode

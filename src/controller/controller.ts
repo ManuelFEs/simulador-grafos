@@ -1,7 +1,7 @@
 import { flechasIniciales, nodosIniciales } from "../model/DatosIniciales";
 import red from "../model/red";
 import { flechaBasic } from "../objects/flecha";
-import canvas from "../View/Canvas";
+import canvas, { visjsEdge } from "../View/Canvas";
 
 class controlador {
 
@@ -32,7 +32,7 @@ class controlador {
     }
 
     updateFlechaBasicAVis(flecha: flechaBasic) {
-        let flechaCanvas;
+        let flechaCanvas :visjsEdge;
         let tempColor: string = "black";
         if (flecha.color == 0) {
             tempColor = "blue";
@@ -40,10 +40,22 @@ class controlador {
         if (flecha.color == 1) {
             tempColor = "red";
         }
-
-        return flechaCanvas = { id: flecha.id, to: flecha.nodoIn, from: flecha.nodoOut, color: tempColor };
+        flechaCanvas ={ id: flecha.id, to: flecha.nodoTo, from: flecha.nodoFrom, color: tempColor }
+        return flechaCanvas;
     }
 
+    updateFlechaVisABasic(flecha: visjsEdge) {
+        let flechaView: flechaBasic;
+        let tempColor: number = 0;
+        if (flecha.color == "blue" ) {
+            tempColor = 0;
+        }
+        if (flecha.color == "red") {
+            tempColor = 1;
+        }
+        flechaView = { id: flecha.id as string, nodoTo: flecha.to as string, nodoFrom: flecha.from as string, color: tempColor as number } as flechaBasic;
+        return flechaView;
+    }
 
     //Pass de view a model
     colorearToModel(id: string) {
@@ -51,10 +63,17 @@ class controlador {
         this.actualizarEdgesView();
     }
 
-    agregarToModel(id:string ) {
-        throw new Error("Method not implemented.");
+    agregarNodeToModel(id:string, tipo: string) {
+        this.red.crearNodo(id, tipo);
     }
 
+    agregarFlechaToModel(edge : visjsEdge) {
+        let flecha= this.updateFlechaVisABasic(edge)
+        
+        this.red.crearFlecha(flecha.id, flecha.color, flecha.nodoTo, flecha.nodoFrom);
+    }
+
+    //Pass de model a view
     actualizarEdgesView() {
         this.canva.updateAllEdges(this.getFlechas().map(element => this.updateFlechaBasicAVis(element)));
     }   
