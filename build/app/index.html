@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Simulador Grafos</title>
+  <script src="https://unpkg.com/xel@0.28.14/xel.js" type="module"></script>
+  <meta name="xel-accent-color" content="purple">
+  <meta name="xel-icons" src="node_modules/xel/icons/material.svg">
+  
+  <meta name="viewport" content="width=device-width">
+  <meta charset="utf-8">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <x-menubar id="menubar">
+    <x-menuitem id="file">
+      <x-label>File</x-label>
+  
+      <x-menu>
+        <x-menuitem>
+          <x-label>New</x-label>
+          <x-shortcut value="Control+N"></x-shortcut>
+        </x-menuitem>
+  
+        <x-menuitem>
+          <x-label>Open…</x-label>
+          <x-shortcut value="Control+O"></x-shortcut>
+        </x-menuitem>
+  
+        <hr>
+  
+        <x-menuitem>
+          <x-label>Save</x-label>
+          <x-shortcut value="Control+S"></x-shortcut>
+        </x-menuitem>
+  
+        <x-menuitem>
+          <x-label>Save as…</x-label>
+          <x-shortcut value="Control+Shift+S"></x-shortcut>
+        </x-menuitem>
+      </x-menu>
+    </x-menuitem>
+  
+    <x-menuitem>
+      <x-label>Editar</x-label>
+  
+      <x-menu>
+        <x-menuitem>
+          <x-icon href="#history-undo"></x-icon>
+          <x-label>Undo</x-label>
+          <x-shortcut value="Control+Z"></x-shortcut>
+        </x-menuitem>
+  
+        <x-menuitem disabled>
+          <x-icon href="#history-redo"></x-icon>
+          <x-label>Redo</x-label>
+          <x-shortcut value="Control+Shift+Z"></x-shortcut>
+        </x-menuitem>
+  
+        <hr>
+  
+        <x-menuitem>
+          <x-icon href="#cut"></x-icon>
+          <x-label>Cut</x-label>
+          <x-shortcut value="Control+X"></x-shortcut>
+        </x-menuitem>
+  
+        <x-menuitem>
+          <x-icon href="#copy"></x-icon>
+          <x-label>Copy</x-label>
+          <x-shortcut value="Control+C"></x-shortcut>
+        </x-menuitem>
+  
+        <x-menuitem>
+          <x-icon href="#paste"></x-icon>
+          <x-label>Paste</x-label>
+          <x-shortcut value="Control+V"></x-shortcut>
+        </x-menuitem>
+      </x-menu>
+    </x-menuitem>
+  
+    <x-menuitem>
+      <x-label>Agregar</x-label>
+  
+      <x-menu>
+        <x-menuitem >
+          <x-label>Nodo</x-label>
+            <x-menu>
+              <x-menuitem id="NodoAgregar">
+                <x-label>Agregar</x-label>
+              </x-menuitem>
+  
+              <x-menuitem id="NodoEditar">
+                <x-label>Editar</x-label>
+              </x-menuitem>
+  
+              <x-menuitem id="NodoEliminar">
+                <x-label>Eliminar</x-label>
+              </x-menuitem>
+            </x-menu>
+        </x-menuitem>
+  
+        <x-menuitem >
+          <x-label>Flecha</x-label>
+          <x-menu>
+            <x-menuitem id="FlechaAgregar">
+              <x-label>Agregar</x-label>
+            </x-menuitem>
+
+            <x-menuitem id="FlechaEditar">
+              <x-label>Editar</x-label>
+            </x-menuitem>
+  
+            <x-menuitem id="FlechaEliminar">
+              <x-label>Eliminar</x-label>
+            </x-menuitem>
+          </x-menu>
+        </x-menuitem>
+      </x-menu>
+    </x-menuitem>
+  
+      <x-notification timeout="2000">This notification will disappear after 2000 miliseconds.</x-notification>
+    <x-menuitem id="colorear">
+      <x-label>Colorear</x-label>
+    </x-menuitem>
+  </x-menubar>
+
+  
+  <div id ="canvas">
+      <div id="mynetwork"></div>
+
+      <x-contextmenu>
+        <x-menu>
+          <x-menuitem>
+            <x-label>Undo</x-label>
+          </x-menuitem>
+    
+          <x-menuitem>
+            <x-label>Redo</x-label>
+          </x-menuitem>
+    
+          <hr>
+    
+          <x-menuitem>
+            <x-label>Cut</x-label>
+          </x-menuitem>
+    
+          <x-menuitem>
+            <x-label>Copy</x-label>
+          </x-menuitem>
+    
+          <x-menuitem>
+            <x-label>Paste</x-label>
+          </x-menuitem>
+    
+          <hr>
+    
+          <x-menuitem>
+            <x-label>Refresh</x-label>
+          </x-menuitem>
+        </x-menu>
+      </x-contextmenu>
+
+  </div>
+
+
+  <script src="bundle.js"></script>
+  
+</body>
+
+</html>

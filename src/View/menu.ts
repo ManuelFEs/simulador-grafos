@@ -1,0 +1,5 @@
+class menu {
+    constructor() {
+        
+    }
+}
