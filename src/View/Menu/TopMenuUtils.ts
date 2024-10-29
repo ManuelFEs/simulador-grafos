@@ -1,6 +1,6 @@
 import canvas from "../Canvas";
 
-export class MenuHelper {
+export class TopMenuHelper {
     
     superior: canvas;
     canvas!: HTMLElement;

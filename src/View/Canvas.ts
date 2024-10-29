@@ -1,18 +1,18 @@
 import vis, { IdType } from "vis-network/standalone/umd/vis-network.min";
 import { options, setCanvas } from "./NetOptions";
 import { controlador } from "../controller/controller";
-import { MenuHelper } from "./Menu/MenuUtils";
-import { Id } from "vis-network/declarations/network/gephiParser";
+import { TopMenuHelper } from "./Menu/TopMenuUtils";
+
 class canvas {
   
 
     container: HTMLElement = document.getElementById('mynetwork') as HTMLElement;
     controller : controlador
     network!: vis.Network;
-    menu: MenuHelper;
+    menu: TopMenuHelper;
 
     constructor(controlador: controlador) {
-        this.menu = new MenuHelper(this);
+        this.menu = new TopMenuHelper(this);
         this.controller = controlador;
         setCanvas(this);
         this.run();

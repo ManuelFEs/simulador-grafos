@@ -45,6 +45,17 @@ class red {
         }
     }
 
+/**
+ * Crea una nueva flecha con los datos de id, color, y nodos entrada y salida. 
+ * La flecha recibe los nodos de entrada y salida. Los nodos de entrada y salida también reciben la flecha.
+ * 
+ * @param id - The unique identifier for the flecha.
+ * @param color - The color of the flecha, represented as a number.
+ * @param nodoIn - The id of the input nodo to which the flecha connects.
+ * @param nodoOut - The id of the output nodo to which the flecha connects.
+ * 
+ * @throws Error if the input or output nodo does not exist.
+ */
     crearFlecha(id: string, color: number, nodoIn: string, nodoOut: string) {
 
         let nodoToObj = this.nodos.find(element => element.id === nodoIn);
@@ -102,16 +113,8 @@ class red {
         if (a === undefined) {
             throw new Error("No existe la flecha");
         }
-        let nodo = this.nodos.find(element => element.id === from);
-        if (nodo !== undefined) {
-            a.nodoFrom = nodo
-        }
-        nodo = this.nodos.find(element => element.id === to);
-        if (nodo !== undefined) {
-            a.nodoTo = nodo
-        }
-        
-        this.crearFlecha(id, a.color, to, from);
+        this.borrarFlecha(a.id)
+        this.crearFlecha(a.id, a.color, to, from);
     }
 
 

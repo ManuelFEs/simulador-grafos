@@ -67,6 +67,7 @@ function editNodeFunction(nodeData:Node, callback:any) {
 }
 
 function editEdgeFunction(edgeData:Edge, callback:any) {
+  console.log(edgeData);
   canvasT.flechaEditar(edgeData.id!, edgeData.to!, edgeData.from!);
   callback(edgeData);
 }
