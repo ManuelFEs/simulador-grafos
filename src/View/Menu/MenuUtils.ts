@@ -17,6 +17,14 @@ export class MenuHelper {
             () => this.colorear()
         );
 
+        const limpiar: HTMLElement = document.getElementById(
+            'limpiar'
+        )!;
+        if ( limpiar ) limpiar.addEventListener( 
+            'click', 
+            () => this.limpiar()
+        );
+
         const NodoAgregar: HTMLElement = document.getElementById(
             'NodoAgregar'
         )!;
@@ -31,14 +39,6 @@ export class MenuHelper {
         if ( NodoEditar ) NodoEditar.addEventListener( 
             'click', 
             () => this.NodoEditar()
-        );
-
-        const NodoEliminar: HTMLElement = document.getElementById(
-            'NodoEliminar'
-        )!;
-        if ( NodoEliminar ) NodoEliminar.addEventListener( 
-            'click', 
-            () => this.NodoEliminar()
         );
 
         const FlechaAgregar: HTMLElement = document.getElementById(
@@ -57,12 +57,12 @@ export class MenuHelper {
             () => this.FlechaEditar()
         );
 
-        const FlechaEliminar: HTMLElement = document.getElementById(
-            'FlechaEliminar'
+        const ItemEliminar: HTMLElement = document.getElementById(
+            'ItemEliminar'
         )!;
-        if ( FlechaEliminar ) FlechaEliminar.addEventListener( 
+        if ( ItemEliminar ) ItemEliminar.addEventListener( 
             'click', 
-            () => this.FlechaEliminar()
+            () => this.ItemEliminar()
         );
 
         const FlechaSensor: HTMLElement = document.getElementById(
@@ -98,6 +98,10 @@ export class MenuHelper {
         );
     }
 
+    limpiar(): any {
+        this.superior.limpiarBtn();
+    }
+
     addMenuContext(e: MouseEvent){  
         e.preventDefault();  
         if (e.button === 2) { // Clic derecho
@@ -110,15 +114,15 @@ export class MenuHelper {
     }
 
     NodoAgregar(): void {
-        this.superior.NodoAgregarBtn();
+        this.superior.nodoAgregarBtn();
     }
     
     NodoEditar(): void {
-        this.superior.NodoEditar();
+        this.superior.nodoEditarBtn();
     }
 
-    NodoEliminar(): void {
-        this.superior.NodoEliminar();
+    ItemEliminar(): void {
+        this.superior.itemEliminarBtn();
     }
 
     FlechaAgregar(): void {
@@ -126,18 +130,14 @@ export class MenuHelper {
     }
 
     FlechaEditar(): void {
-        this.superior.FlechaEditar();
-    }
-
-    FlechaEliminar(): void {
-        this.superior.FlechaEliminar();
+        this.superior.flechaEditarBtn();
     }
 
     FlechaSensor(): void {
-        this.superior.FlechaSensor();
+        this.superior.flechaSensorBtn();
     }
 
     FlechaComando(): void {
-        this.superior.FlechaComando();
+        this.superior.flechaComandoBtn();
     }
 }

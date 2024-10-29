@@ -39,10 +39,10 @@
     </x-menuitem>
   
     <x-menuitem>
-      <x-label>Agregar</x-label>
+      <x-label>Objetos</x-label>
   
       <x-menu>
-        <x-menuitem >
+        <x-menuitem>
           <x-label>Nodo</x-label>
             <x-menu>
               <x-menuitem id="NodoAgregar">
@@ -54,15 +54,10 @@
                 <x-label>Editar</x-label>
                 <x-shortcut value="S"></x-shortcut>
               </x-menuitem>
-  
-              <x-menuitem id="NodoEliminar">
-                <x-label>Eliminar</x-label>
-                <x-shortcut value="D"></x-shortcut>
-              </x-menuitem>
             </x-menu>
         </x-menuitem>
   
-        <x-menuitem >
+        <x-menuitem>
           <x-label>Flecha</x-label>
           <x-menu>
             <x-menuitem id="FlechaAgregar">
@@ -74,18 +69,22 @@
               <x-label>Editar</x-label>
               <x-shortcut value="X"></x-shortcut>
             </x-menuitem>
-  
-            <x-menuitem id="FlechaEliminar">
-              <x-label>Eliminar</x-label>
-              <x-shortcut value="C"></x-shortcut>
-            </x-menuitem>
+
           </x-menu>
         </x-menuitem>
+
+        <x-menuitem id="ItemEliminar">
+          <x-label>Borrar</x-label>
+        </x-menuitem>
+
       </x-menu>
     </x-menuitem>
     <x-menuitem id="colorear">
       <x-label>Colorear</x-label>
-      <x-notification opened timeout="2000">This notification will disappear after 2000 miliseconds.</x-notification>
+
+    </x-menuitem>
+    <x-menuitem id="limpiar">
+      <x-label>Limpiar</x-label>
 
     </x-menuitem>
   </x-menubar>

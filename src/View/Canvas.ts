@@ -1,7 +1,8 @@
-import vis from "vis-network/standalone/umd/vis-network.min";
+import vis, { IdType } from "vis-network/standalone/umd/vis-network.min";
 import { options, setCanvas } from "./NetOptions";
 import { controlador } from "../controller/controller";
 import { MenuHelper } from "./Menu/MenuUtils";
+import { Id } from "vis-network/declarations/network/gephiParser";
 class canvas {
   
 
@@ -57,22 +58,43 @@ class canvas {
         })
     }
 
-    //CRUD objetos to view
+    //CUD model to view
 
     nodoAgregar(id: vis.IdType, tipo: string) {
         id = id.toString();
         this.controller.agregarNodeToModel(id, tipo);
     }
 
-    flechaAgregar(id: vis.IdType, color: string, to: vis.IdType, from:vis.IdType) {
+    flechaAgregar(id: vis.IdType, color: string = "black", to: vis.IdType, from:vis.IdType) {
         id = id.toString();
         to = to.toString();
         from = from.toString();
         this.controller.agregarFlechaToModel({id, color, to, from} as visjsEdge);
     }
 
-    //Funciones de botones
+    nodoEliminar(id: vis.IdType) {
+        id = id.toString();
+        this.controller.eliminarNodeToModel(id);
+    }
+    
+    flechaEliminar(id: IdType) {
+        id = id.toString();
+        this.controller.eliminarFlechaToModel(id);
+    }
+    
+    flechaEditar(id: IdType, to: IdType, from: IdType) {
+        id = id.toString();
+        to = to.toString();
+        from = from.toString();
+        this.controller.editarFlechaToModel(id, to, from);
+    }
 
+    nodoEditar(id: IdType) {
+        throw new Error("Method not implemented.");
+    }
+    
+    //Funciones de botones
+    
     colorear(){ //TODO hacer funcionar
         let selectedEdge : string;
         this.network.once("click", (params) => {
@@ -83,31 +105,35 @@ class canvas {
         });
     }
 
-    NodoAgregarBtn() {
-        this.network.addNodeMode()
+    limpiarBtn() {
+        this.controller.limpiarToModel()
     }
     
-    NodoEliminar() {
-        this.network.deleteSelected()
+    nodoAgregarBtn() {
+        this.network.addNodeMode()
     }
     
     flechaAgregarBtn() {
         this.network.addEdgeMode()
     }
+    
+    itemEliminarBtn() {
+        this.network.deleteSelected()
+    }
+    
+    nodoEditarBtn() {
+        this.network.editNode()
+    }
+    
+    flechaEditarBtn() {
+        this.network.editEdgeMode()
+    }
+    
+    flechaComandoBtn() {
+        throw new Error("Method not implemented.");
+    }
 
-    FlechaEditar() {
-        throw new Error("Method not implemented.");
-    }
-    FlechaEliminar() {
-        throw new Error("Method not implemented.");
-    }
-    NodoEditar() {
-        throw new Error("Method not implemented.");
-    }
-    FlechaComando() {
-        throw new Error("Method not implemented.");
-    }
-    FlechaSensor() {
+    flechaSensorBtn() {
         throw new Error("Method not implemented.");
     }
 }

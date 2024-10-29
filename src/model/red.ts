@@ -29,6 +29,10 @@ class red {
         this.coloreador.coloreo(id);
     }
 
+    colorClear(){
+        this.coloreador.colorClear();
+    }
+
     notify(s: object, e: string) {
         
     }
@@ -58,9 +62,63 @@ class red {
             nodofromObj.agregarflechaOut(nuevaFlecha);
         }
         else{
-        throw new Error("No existe el nodo de entrada o salida");
+            throw new Error("No existe el nodo de entrada o salida");
         }
     }
+
+    borrarNodo(id: string) {
+        let a = this.nodos.find(element => element.id === id);
+        if (a === undefined) {
+            throw new Error("No existe el nodo");
+        }
+        
+        a.inFlechas.forEach(element => {
+            this.flechas.slice(this.flechas.indexOf(element), 1);
+        });
+        a.inFlechas.forEach(element => {
+            this.flechas.slice(this.flechas.indexOf(element), 1);
+        });
+
+        this.nodos.slice(this.nodos.indexOf(a), 1);
+    }
+
+    borrarFlecha(id: string) {
+        let a = this.flechas.find(element => element.id === id);
+        if (a === undefined) {
+            throw new Error("No existe la flecha");
+        }
+        a.nodoTo!.outFlechas.slice(this.flechas.indexOf(a), 1);
+        a.nodoFrom!.inFlechas.slice(this.flechas.indexOf(a), 1);
+
+        this.flechas.slice(this.flechas.indexOf(a), 1);
+    }
+
+    editarNodo(id: string, tipo: string) {
+        let a = this.nodos.find(element => element.id === id);
+        if (a === undefined) {
+            throw new Error("No existe el nodo");
+        }
+        this.borrarNodo(id)
+        this.crearNodo(id, tipo);
+    }
+
+    editarFlecha(id: string, to: string, from: string) {
+        let a = this.flechas.find(element => element.id === id);
+        if (a === undefined) {
+            throw new Error("No existe la flecha");
+        }
+        let nodo = this.nodos.find(element => element.id === from);
+        if (nodo !== undefined) {
+            a.nodoFrom = nodo
+        }
+        nodo = this.nodos.find(element => element.id === to);
+        if (nodo !== undefined) {
+            a.nodoTo = nodo
+        }
+        
+        this.crearFlecha(id, a.color, to, from);
+    }
+
 
     getNodosBasic(){
         let nodosBasic: nodoBasic[] = this.nodos.map(

@@ -3,8 +3,8 @@ import { flecha } from "./flecha";
 
 //Definido como funciones, 1 grupo de entradas, 1 tipo de salida
 abstract class nodo extends ItemRed implements nodoBasic { 
-    _InFlechas: flecha[] = [];
-    _OutFlechas: flecha[] = [];
+    _inFlechas: flecha[] = [];
+    _outFlechas: flecha[] = [];
     _tipo!: string;
     constructor(id: string) {
         super(id);
@@ -38,12 +38,22 @@ abstract class nodo extends ItemRed implements nodoBasic {
 
     
     public get inFlechas() : flecha[] {
-        return this._InFlechas;
+        return this._inFlechas;
     }
 
     
     public get outFlechas() : flecha[] {
-        return this._OutFlechas;
+        return this._outFlechas;
+    }
+
+    
+    public set inFlechas(v : flecha[]) {
+        this._inFlechas = v;
+    }
+    
+    
+    public set outFlechas(v : flecha[]) {
+        this._outFlechas = v;
     }
     
     

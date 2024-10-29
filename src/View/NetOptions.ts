@@ -1,6 +1,6 @@
 import { Edge, Node } from "vis-network/standalone/umd/vis-network";
 import canvas from "./Canvas";
-
+import {v4 as uuidv4} from "uuid";
 
 var canvasT: canvas;
 
@@ -31,13 +31,13 @@ var options = {
 
       addEdge: addEdgeFunction,
 
-      editNode: function (nodeData:Node, callback:any) {
-        callback(nodeData);
-      },
+      editNode: editNodeFunction,
 
-      editEdge: function(edgeData:Edge, callback:any) {
-        callback(edgeData);
-      },
+      editEdge: editEdgeFunction,
+
+      deleteNode: deleteNodeFunction,
+
+      deleteEdge: deleteEdgeFunction
     }
 }
 
@@ -45,19 +45,46 @@ var options = {
 function addNodeFunction(nodeData:Edge, callback:Function, ) {
   nodeData.label = undefined;
   let tipo = 'ni'; //Hardcoded
-  if (nodeData.id) {
-    canvasT.nodoAgregar(nodeData.id, tipo);
-  }
+  nodeData.id = uuidv4();
+  canvasT.nodoAgregar(nodeData.id, tipo);
   callback(nodeData);
 }
 
 function addEdgeFunction(edgeData:Edge,callback:any) {
   edgeData.color = 'black';
-  callback(edgeData);
-  if (edgeData.id && edgeData.from && edgeData.to && edgeData.color) {
+  edgeData.id = uuidv4();
+  if (edgeData.from && edgeData.to) {
     canvasT.flechaAgregar(edgeData.id, edgeData.color, edgeData.to, edgeData.from);
   }
+  callback(edgeData);
 }
+
+function editNodeFunction(nodeData:Node, callback:any) {
+  if (nodeData.id) {
+    canvasT.nodoEditar(nodeData.id);
+  }
+  callback(nodeData);
+}
+
+function editEdgeFunction(edgeData:Edge, callback:any) {
+  canvasT.flechaEditar(edgeData.id!, edgeData.to!, edgeData.from!);
+  callback(edgeData);
+}
+
+function deleteNodeFunction(nodeData:Node, callback:any) {
+  if (nodeData.id) {
+    canvasT.nodoEliminar(nodeData.id);
+  }
+  callback(nodeData);
+}
+
+function deleteEdgeFunction(edgeData:Edge, callback:any) {
+  if (edgeData.id) {
+    canvasT.flechaEliminar(edgeData.id);
+  }
+  callback(edgeData);
+}
+
 
 function setCanvas(c : canvas) {
   canvasT = c;

@@ -63,14 +63,37 @@ class controlador {
         this.actualizarEdgesView();
     }
 
+    limpiarToModel() {
+        this.red.colorClear();
+        this.actualizarEdgesView();
+    }
+
+    //Agregar objetos
     agregarNodeToModel(id:string, tipo: string) {
         this.red.crearNodo(id, tipo);
     }
 
     agregarFlechaToModel(edge : visjsEdge) {
-        let flecha= this.updateFlechaVisABasic(edge)
-        
+        let flecha = this.updateFlechaVisABasic(edge)
         this.red.crearFlecha(flecha.id, flecha.color, flecha.nodoTo, flecha.nodoFrom);
+    }
+
+    //Eliminar objetos
+    eliminarNodeToModel(id: string) {
+        this.red.borrarNodo(id);
+    }
+
+    eliminarFlechaToModel(id: string) {
+        this.red.borrarFlecha(id);
+    }
+
+    //Editar objetos
+    editarNodeToModel(id: string, tipo: string) {
+        this.red.editarNodo(id, tipo);
+    }
+
+    editarFlechaToModel(id: string, to: string, from: string) {
+        this.red.editarFlecha(id, to, from);
     }
 
     //Pass de model a view

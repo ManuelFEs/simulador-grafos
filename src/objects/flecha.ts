@@ -31,6 +31,16 @@ class flecha extends ItemRed  {
     public get color() : number {
         return this._color;
     }
+
+    
+    public set nodoTo(v : nodo) {
+        this._nodoTo = v;
+    }
+    
+    
+    public set nodoFrom(v : nodo) {
+        this._nodoFrom = v;
+    }
     
     
     public set color(v : number) {
