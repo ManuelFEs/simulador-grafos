@@ -87,9 +87,10 @@ class red {
         if (a === undefined) {
             throw new Error("No existe la flecha");
         }
-        a.nodoTo!.outFlechas.slice(this.flechas.indexOf(a), 1);
-        a.nodoFrom!.inFlechas.slice(this.flechas.indexOf(a), 1);
-
+        a.nodoTo!.outFlechas.slice(a.nodoTo!.outFlechas.indexOf(a), 1);
+        a.nodoFrom!.inFlechas.slice(a.nodoFrom!.inFlechas.indexOf(a), 1);
+        console.log(a.nodoTo!.outFlechas.indexOf(a))
+        console.log(a)
         this.flechas.slice(this.flechas.indexOf(a), 1);
     }
 
