@@ -33,10 +33,6 @@ class red {
         this.coloreador.colorClear();
     }
 
-    notify(s: object, e: string) {
-        
-    }
-
     //Make nodes and edges
     crearNodo(id: string, tipo: string) {
         switch (tipo) {
@@ -87,11 +83,9 @@ class red {
         if (a === undefined) {
             throw new Error("No existe la flecha");
         }
-        a.nodoTo!.outFlechas.slice(a.nodoTo!.outFlechas.indexOf(a), 1);
-        a.nodoFrom!.inFlechas.slice(a.nodoFrom!.inFlechas.indexOf(a), 1);
-        console.log(a.nodoTo!.outFlechas.indexOf(a))
-        console.log(a)
-        this.flechas.slice(this.flechas.indexOf(a), 1);
+        a.nodoTo!.quitarflechaIn(a);
+        a.nodoFrom!.quitarflechaOut(a);
+        this.flechas.splice(this.flechas.indexOf(a), 1);
     }
 
     editarNodo(id: string, tipo: string) {

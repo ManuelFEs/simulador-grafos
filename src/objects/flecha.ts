@@ -2,9 +2,9 @@ import { ItemRed } from "../util/objetosRed";import { nodo } from "./nodo";
 
 class flecha extends ItemRed  {
     
-    _nodoTo: nodo;
-    _nodoFrom: nodo;
-    _color : number; //1 = rojo, 0 = azul, 2 = negro
+    private _nodoTo: nodo | undefined;
+    private _nodoFrom: nodo | undefined;
+    private _color : number; //1 = rojo, 0 = azul, 2 = negro
 
     constructor(_id: string, nodoIn: nodo, nodoOut: nodo, color: number = 2) {
         super (_id);
@@ -33,12 +33,12 @@ class flecha extends ItemRed  {
     }
 
     
-    public set nodoTo(v : nodo) {
+    public set nodoTo(v : nodo | undefined) {
         this._nodoTo = v;
     }
     
     
-    public set nodoFrom(v : nodo) {
+    public set nodoFrom(v : nodo | undefined) {
         this._nodoFrom = v;
     }
     

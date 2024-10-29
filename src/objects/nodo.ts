@@ -22,6 +22,7 @@ abstract class nodo extends ItemRed implements nodoBasic {
 
     quitarflechaIn(flecha: flecha) {
         this.inFlechas.splice(this.inFlechas.indexOf(flecha), 1);
+        flecha.nodoTo = undefined;
     }
 
     agregarflechaOut(flecha: flecha) { //agrega una flecha de salida
@@ -30,6 +31,7 @@ abstract class nodo extends ItemRed implements nodoBasic {
 
     quitarflechaOut(flecha: flecha) {
         this.outFlechas.splice(this.outFlechas.indexOf(flecha), 1);
+        flecha.nodoFrom = undefined;
     }
 
     public get tipo() : string {

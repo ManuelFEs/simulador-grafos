@@ -78,10 +78,12 @@ function deleteNodeFunction(nodeData:Node, callback:any) {
   callback(nodeData);
 }
 
-function deleteEdgeFunction(edgeData:Edge, callback:any) {
-  if (edgeData.id) {
-    canvasT.flechaEliminar(edgeData.id);
+function deleteEdgeFunction(edgeData:any, callback:any) {
+  if (edgeData.edges[0]) {
+    canvasT.flechaEliminar(edgeData.edges[0]);
+    
   }
+  
   callback(edgeData);
 }
 
