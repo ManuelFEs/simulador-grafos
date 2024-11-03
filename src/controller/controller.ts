@@ -46,7 +46,7 @@ class controlador {
 
     updateFlechaVisABasic(flecha: visjsEdge) {
         let flechaView: flechaBasic;
-        let tempColor: number = 0;
+        let tempColor: number = 2;
         if (flecha.color == "blue" ) {
             tempColor = 0;
         }

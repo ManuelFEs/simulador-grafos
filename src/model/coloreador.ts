@@ -32,11 +32,11 @@ export class coloreador {
         do{
             nodeAct = this.Seleccionarflecha(cola.shift() as flecha);
             if(nodeAct == undefined) break;
-
+            
             flechasMalColor = nodeAct.comprobarColores();
-
             cola = cola.concat(flechasMalColor);
             a++;
+            
             if(a > this.red.flechas.length * 2){ //¿cuál es la cantidad máxima de cambios de color que realizan todas las flechas de un grafo estable?
                 alert("El grafo no es estable")
                 break;
@@ -50,12 +50,14 @@ export class coloreador {
     }
 
     private ColorearFlecha(flecha: flecha) {
+        flecha.color = 2;
         if(flecha.nodoFrom){
             flecha.color = flecha.nodoFrom.colorSalida();
         }
         else{
             flecha.color = 1;
         }
+        alert("pausa")
     }
 }
 

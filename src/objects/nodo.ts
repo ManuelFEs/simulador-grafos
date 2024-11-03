@@ -18,15 +18,11 @@ abstract class nodo extends ItemRed implements nodoBasic {
 
     agregarflechaIn(flecha: flecha) { //agrega una flecha de entrada
         this.inFlechas.push(flecha);
-        console.log("agregado" + this.id)
-        console.log(this.inFlechas)
         flecha.nodoTo = this;
     }
 
     quitarflechaIn(flecha: flecha) {
         this.inFlechas.splice(this.inFlechas.indexOf(flecha), 1);
-        console.log("quitado" + this.id)
-        console.log(this.inFlechas)
         flecha.nodoTo = undefined;
     }
 

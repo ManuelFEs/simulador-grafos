@@ -6,6 +6,7 @@ export const nodosIniciales: nodoBasic[] = [
     {id: '2', tipo: 'ni' },
     {id: '3', tipo: 'ni' },
     {id: '4', tipo: 'ni' },
+    {id: '5', tipo: 'ni' },
 ]
 
 export const flechasIniciales: flechaBasic[]  = [
@@ -13,5 +14,5 @@ export const flechasIniciales: flechaBasic[]  = [
     {id: '20', nodoTo: '2', nodoFrom: '3', color: 2},
     {id: '30', nodoTo: '4', nodoFrom: '3', color: 2},
     {id: '40', nodoTo: '1', nodoFrom: '4', color: 2},
-    {id: '50', nodoTo: '1', nodoFrom: '4', color: 2},
+    {id: '50', nodoTo: '1', nodoFrom: '4', color: 2}
 ]

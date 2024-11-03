@@ -37,7 +37,7 @@ class red {
     crearNodo(id: string, tipo: string) {
         switch (tipo) {
             case 'ni':
-                this._nodos.push(new nodoNi(id));
+                this.nodos.push(new nodoNi(id));
                 break;
         
             default:
@@ -82,7 +82,7 @@ class red {
         a.inFlechas.forEach(element => {
             this.flechas.slice(this.flechas.indexOf(element), 1);
         });
-        a.inFlechas.forEach(element => {
+        a.outFlechas.forEach(element => {
             this.flechas.slice(this.flechas.indexOf(element), 1);
         });
 
@@ -109,12 +109,8 @@ class red {
     }
 
     editarFlecha(id: string, to: string, from: string) {
-        let a = this.flechas.find(element => element.id === id);
-        if (a === undefined) {
-            throw new Error("No existe la flecha");
-        }
-        this.borrarFlecha(a.id)
-        this.crearFlecha(a.id, a.color, to, from);
+        this.borrarFlecha(id)
+        this.crearFlecha(id, 2, to, from);
     }
 
 

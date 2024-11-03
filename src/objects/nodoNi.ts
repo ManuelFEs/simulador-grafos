@@ -26,14 +26,17 @@ class nodoNi extends nodo {
         let flechasMal:flecha[] = [];
         let colorCorrecto = this.colorSalida();
         flechasMal = this.flechasColorErr(colorCorrecto);
-        
         return flechasMal;
     }
 
     flechasColorErr(colorCorrecto: number): flecha[] {
-        return this.outFlechas.filter((flecha) => {
-            return flecha.color !== colorCorrecto
-        })
+        const flechasMal: flecha[] = [];
+        for (let i = 0; i < this.outFlechas.length; i++) {
+            if (this.outFlechas[i].color !== colorCorrecto) {
+                flechasMal.push(this.outFlechas[i]);
+            }
+        }
+        return flechasMal
     }
 }
 
