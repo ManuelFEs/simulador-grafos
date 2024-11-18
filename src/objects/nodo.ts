@@ -11,10 +11,15 @@ abstract class nodo extends ItemRed implements nodoBasic {
     }
     
     abstract colorSalida() : number; //decide el color de las flechas salientes, no colorea directamente
-
-    abstract comprobarColores():flecha[];
-
+    
     abstract flechasColorErr(ColorCorrecto: number):flecha[];
+
+    comprobarColores(): flecha[] {
+        let flechasMal:flecha[] = [];
+        let colorCorrecto = this.colorSalida();
+        flechasMal = this.flechasColorErr(colorCorrecto);
+        return flechasMal;
+    }
 
     agregarflechaIn(flecha: flecha) { //agrega una flecha de entrada
         this.inFlechas.push(flecha);

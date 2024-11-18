@@ -8,10 +8,19 @@ var options = {
     physics:{
       enabled: true
     },
+
+    groups:{
+      ni: {
+        color:{
+          background:"white",
+          border:"black",
+        }
+      },
+    },
+
     nodes:{
-      color:"black",
       shape:"dot",
-      size:7,
+      size:10,
     },
 
     edges:{
@@ -80,10 +89,8 @@ function deleteNodeFunction(nodeData:Node, callback:any) {
 
 function deleteEdgeFunction(edgeData:any, callback:any) {
   if (edgeData.edges[0]) {
-    canvasT.flechaEliminar(edgeData.edges[0]);
-    
+    canvasT.flechaEliminar(edgeData.edges[0]); 
   }
-  
   callback(edgeData);
 }
 

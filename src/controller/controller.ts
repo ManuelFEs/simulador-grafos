@@ -1,7 +1,8 @@
 import { flechasIniciales, nodosIniciales } from "../model/DatosIniciales";
 import red from "../model/red";
 import { flechaBasic } from "../objects/flecha";
-import canvas, { visjsEdge } from "../View/Canvas";
+import { nodoBasic } from "../objects/nodo";
+import canvas, { visjsEdge, visjsNode } from "../View/Canvas";
 
 class controlador {
 
@@ -29,6 +30,14 @@ class controlador {
 
     getFlecha(id: string) {
         return this.red.getFlechaBasic(id);
+    }
+
+    updateNodoBasicAVis(nodo:nodoBasic){
+        let nodoCanvas :visjsNode;
+        let tempColor: string = "black";
+
+        nodoCanvas ={ id: nodo.id, group: nodo.tipo}
+        return nodoCanvas;
     }
 
     updateFlechaBasicAVis(flecha: flechaBasic) {
@@ -101,7 +110,7 @@ class controlador {
         this.canva.updateAllEdges(this.getFlechas().map(element => this.updateFlechaBasicAVis(element)));
     }   
     actualizarTodoView() {
-        this.canva.updateAllComponents(this.getNodos(), this.getFlechas().map(element => this.updateFlechaBasicAVis(element)));
+        this.canva.updateAllComponents(this.getNodos().map(e => this.updateNodoBasicAVis(e)), this.getFlechas().map(element => this.updateFlechaBasicAVis(element)));
     }
 }
 

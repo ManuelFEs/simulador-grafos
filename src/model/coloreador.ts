@@ -50,14 +50,12 @@ export class coloreador {
     }
 
     private ColorearFlecha(flecha: flecha) {
-        flecha.color = 2;
         if(flecha.nodoFrom){
             flecha.color = flecha.nodoFrom.colorSalida();
         }
         else{
             flecha.color = 1;
         }
-        alert("pausa")
     }
 }
 

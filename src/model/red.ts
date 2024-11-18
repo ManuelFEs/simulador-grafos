@@ -2,6 +2,7 @@ import { controlador } from "../controller/controller";
 import { flecha, flechaBasic } from "../objects/flecha";
 import { nodo, nodoBasic } from "../objects/nodo";
 import { nodoNi } from "../objects/nodoNi";
+import { nodoY } from "../objects/nodoY";
 import { coloreador } from "./coloreador";
 
 class red {
@@ -36,12 +37,14 @@ class red {
     //Make nodes and edges
     crearNodo(id: string, tipo: string) {
         switch (tipo) {
-            case 'ni':
+            case "ni":
                 this.nodos.push(new nodoNi(id));
                 break;
-        
+            case "y":
+                this.nodos.push(new nodoY(id));
+                break;
             default:
-                throw new Error("No existe el tipo de nodo");
+                throw new Error("No existe el tipo de nodo para "+id+" "+tipo);
         }
     }
 

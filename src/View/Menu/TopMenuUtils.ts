@@ -103,7 +103,8 @@ export class TopMenuHelper {
     }
 
     addMenuContext(e: MouseEvent){  
-        e.preventDefault();  
+        e.preventDefault();
+
         if (e.button === 2) { // Clic derecho
             this.superior.seleccionarItem();
         }

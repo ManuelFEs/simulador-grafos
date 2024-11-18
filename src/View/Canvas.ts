@@ -47,7 +47,7 @@ class canvas {
 
 
     seleccionarItem() {
-        this.network.once("click", (params) => {
+        this.network.once("doubleClick", (params) => {
 
         })
     }
@@ -148,6 +148,7 @@ export interface visjsEdge{
 
 export interface visjsNode{
     id: number | string;
+    group: string;
 }
 
 export default canvas
